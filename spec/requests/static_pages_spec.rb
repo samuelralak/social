@@ -8,9 +8,14 @@ describe "StaticPages" do
 			expect(page).to have_content('Social Network')
 		end
 
-		it "Should have title 'Home'" do
+		it "Should have base title" do
 			visit '/static_pages/home'
-			expect(page).to have_title('Social Network | Home')
+			expect(page).to have_title('Social Network')
+		end
+
+		it "Should have custom page title" do
+			visit '/static_pages/home'
+			expect(page).not_to have_title('| Home')
 		end
 	end
 
