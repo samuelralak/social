@@ -1,9 +1,9 @@
 %header{:class => "navbar navbar-inverse navbar-fixed-top"}
 	.navbar-inner
 		.container
-			= link_to "Social Network", '#', class: "navbar-brand"
+			= link_to "Social Network", root_path, class: "navbar-brand"
 			%nav
 				%ul{:class => "nav navbar-nav pull-right"}
-					%li= link_to "Home", '#'
-					%li= link_to "Help", '#'
+					%li= link_to "Home", root_path
+					%li= link_to "Help", help_path
 					%li= link_to "Sign in", '#'
