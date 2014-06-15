@@ -2,57 +2,35 @@ require 'spec_helper'
 
 describe "StaticPages" do
 
+	subject { page }
+
 	describe "Home page" do
-		it "Should have the content 'Social Network'" do
-			visit root_path
-			expect(page).to have_content('Social Network')
-		end
+		before { visit root_path }
 
-		it "Should have base title" do
-			visit root_path
-			expect(page).to have_title('Social Network')
-		end
-
-		it "Should have custom page title" do
-			visit root_path
-			expect(page).not_to have_title('| Home')
-		end
+		it { should have_content('Social Network') }
+		it { should have_title(full_title('')) } 
+		it { should_not have_title('| Home') }
 	end
 
 	describe "Help page" do
-		it "Should have the content 'Help'" do
-			visit help_path
-			expect(page).to have_content('Help')
-		end
+		before { visit help_path }
 
-		it "Should have title 'Help'" do
-			visit help_path
-			expect(page).to have_title('Social Network | Help')
-		end
+		it { should have_content('Help') }
+		it { should have_title(full_title('Help')) }
 	end
 
 	describe "About page" do
-		it "Should have the content 'About Us'" do
-			visit about_path
-			expect(page).to have_content('About Us')
-		end
+		before { visit about_path }
 
-		it "Should have title 'About Us'" do
-			visit about_path
-			expect(page).to have_title('Social Network | About Us')
-		end
+		it { should have_content('About Us') }
+		it { should have_title(full_title('About Us')) }
 	end
 
 	describe "Contact page" do
-		it "Should have the content 'Contact Us'" do
-			visit contact_path
-			expect(page).to have_content('Contact Us')
-		end
+		before { visit contact_path }
 
-		it "Should have title 'Contact Us'" do
-			visit contact_path
-			expect(page).to have_title('Social Network | Contact Us')
-		end
+		it { should have_content('Contact Us') }
+		it { should have_title(full_title('Contact Us')) }
 	end
 
 end
