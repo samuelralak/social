@@ -1,58 +1,64 @@
 require 'spec_helper'
 
-describe "StaticPages" do
+describe "Static Pages" do
+
+	subject { page }
+
+	shared_examples_for "all static pages" do
+		it { should have_selector('h1', text: heading) }
+		it { should have_title(full_title(page_title)) }
+	end
 
 	describe "Home page" do
-		it "Should have the content 'Social Network'" do
-			visit '/static_pages/home'
-			expect(page).to have_content('Social Network')
-		end
+		before { visit root_path }
+		let(:heading) 	 {'Social Network'}
+		let(:page_title) {''}
 
-		it "Should have base title" do
-			visit '/static_pages/home'
-			expect(page).to have_title('Social Network')
-		end
-
-		it "Should have custom page title" do
-			visit '/static_pages/home'
-			expect(page).not_to have_title('| Home')
-		end
+		it_should_behave_like "all static pages" 
+		it { should_not have_title('| Home') }
 	end
 
 	describe "Help page" do
-		it "Should have the content 'Help'" do
-			visit '/static_pages/help'
-			expect(page).to have_content('Help')
-		end
+		before { visit help_path }
+		let(:heading) 	 {'Help'}
+		let(:page_title) {'Help'}
 
-		it "Should have title 'Help'" do
-			visit '/static_pages/help'
-			expect(page).to have_title('Social Network | Help')
-		end
+		it_should_behave_like "all static pages" 
 	end
 
 	describe "About page" do
-		it "Should have the content 'About Us'" do
-			visit '/static_pages/about'
-			expect(page).to have_content('About Us')
-		end
+		before { visit about_path }
+		let(:heading) 	 {'About Us'}
+		let(:page_title) {'About Us'}
 
-		it "Should have title 'About Us'" do
-			visit '/static_pages/about'
-			expect(page).to have_title('Social Network | About Us')
-		end
+		it_should_behave_like "all static pages" 
 	end
 
 	describe "Contact page" do
-		it "Should have the content 'Contact Us'" do
-			visit '/static_pages/contact'
-			expect(page).to have_content('Contact Us')
-		end
+		before { visit contact_path }
+		let(:heading) 	 {'Contact Us'}
+		let(:page_title) {'Contact Us'}
 
-		it "Should have title 'Contact Us'" do
-			visit '/static_pages/contact'
-			expect(page).to have_title('Social Network | Contact Us')
-		end
+		it_should_behave_like "all static pages" 
+	end
+
+	it "should have the right links on the layout" do
+		visit root_path
+
+		click_link "Sign Up now!"
+		expect(page).to have_title(full_title('Sign Up'))
+
+		click_link "Help"
+		expect(page).to have_title(full_title('Help'))
+
+		click_link "About"
+		expect(page).to have_title(full_title('About Us'))
+
+		click_link "Contact"
+		expect(page).to have_title(full_title('Contact Us'))
+
+		click_link "SOCIAL NETWORK"
+		expect(page).to have_title(full_title(''))
 	end
 
 end
