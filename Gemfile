@@ -33,6 +33,10 @@ gem 'jbuilder', '~> 1.2'
 # Haml to describe the XHTML of any web document without the use of traditional inline coding
 gem 'haml'
 
+# Bootstrap makes it easy to add nice web design and user interface elements
+gem 'bootstrap-sass'
+gem 'sprockets'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
