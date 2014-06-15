@@ -1,2 +1,10 @@
-%h1 Social Network
-%p= "This is the homepage for the social network"
+.center.hero-unit
+	%h1 Welcome to the Social Network
+
+	%h2
+		This is the home page for the 
+		= link_to 'Social Network', '#'
+
+	= link_to 'Sign Up now!', '#', class: 'btn btn-large btn-primary'
+
+= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/'
