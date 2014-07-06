@@ -18,6 +18,12 @@ describe "Authentication" do
 
 			it { should have_title('Sign in') }
       		it { should have_selector('div.alert.alert-danger') }
+
+      		describe "after visiting another page" do
+      			before { click_link "Home" }
+
+				it { should have_selector('div.alert.alert-danger') }      			
+      		end
 		end
 
 		describe "with valid information" do
