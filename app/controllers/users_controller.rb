@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+  	@user = User.new
   end
 
   def show
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
   	rescue ActiveRecord::RecordNotFound
 
   		flash[:notice] = "Could not find user"
-  		
+
   	end
   end
 end
