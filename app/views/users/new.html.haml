@@ -19,4 +19,5 @@
 			= f.password_field :password_confirmation
 
 			= f.submit "Create my account", class: "btn btn-primary btn-lg"
-		
+
+		%p= "Already have an account? #{link_to 'Sign in', signin_path}".html_safe
