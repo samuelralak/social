@@ -7,7 +7,7 @@
 					%li= link_to "Home", root_path
 					%li= link_to "Help", help_path
 					- if signed_in?
-						%li= link_to "Users", '#'
+						%li= link_to "Users", users_path
 
 						%li{:class => "dropdown"}
 							= link_to "Account <b class='caret'></b>".html_safe, '#', :data => {:toggle => "dropdown"}, :class => "dropdown-toggle"
