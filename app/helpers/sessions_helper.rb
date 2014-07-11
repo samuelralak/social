@@ -41,4 +41,15 @@ module SessionsHelper
 		# set current user to nil
 		self.current_user =  nil
 	end
+
+	def redirect_back_or(default)
+		redirect_to(session[:redirect_to] || default)
+		session.delete(:return_to)
+	end
+
+	def store_location
+		# This method puts the requested URL in the session variable 
+		# under the key :return_to, but only for a GET request (if request.get?)
+		session[:return_to] = request.url if request.get?
+	end
 end
