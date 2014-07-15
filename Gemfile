@@ -40,6 +40,13 @@ gem 'sprockets'
 # Bcrypt to irreversibly transform the password to make the password hash
 gem 'bcrypt-ruby'
 
+# Make sample users with semi-realistic names and email addresses
+gem 'faker'
+
+# Pagination gems
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
