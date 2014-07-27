@@ -26,9 +26,9 @@ class UsersController < ApplicationController
   def show
   	begin
   		@user = User.find(params[:id])
+      @microposts = @user.microposts.paginate(page: params[:page])
 
   	rescue ActiveRecord::RecordNotFound
-
   		flash[:notice] = "Could not find user"
 
   	end
