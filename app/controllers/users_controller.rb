@@ -26,9 +26,9 @@ class UsersController < ApplicationController
   def show
   	begin
   		@user = User.find(params[:id])
+      @microposts = @user.microposts.paginate(page: params[:page])
 
   	rescue ActiveRecord::RecordNotFound
-
   		flash[:notice] = "Could not find user"
 
   	end
@@ -59,16 +59,6 @@ class UsersController < ApplicationController
   	end
 
     # Before filters
-
-    def signed_in_user
-      unless signed_in?
-        store_location
-        flash[:warning] = "Please sign in."   
-        redirect_to signin_url
-      end
-
-      # redirect_to signin_url, notice: "Please sign in." unless signed_in?
-    end
 
     def correct_user
       @user = User.find(params[:id])

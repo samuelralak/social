@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :microposts, dependent: :destroy
+
 	has_secure_password
 
 	before_save { email.downcase! }
@@ -16,6 +18,10 @@ class User < ActiveRecord::Base
 	def User.digest(token)
 		Digest::SHA1.hexdigest(token.to_s)
 	end
+
+	def feed
+  		Micropost.where("user_id = ?", id)
+  	end
 
 	private
 
