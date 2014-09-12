@@ -25,6 +25,14 @@ class User < ActiveRecord::Base
   		Micropost.where("user_id = ?", id)
   	end
 
+  	def following?(other_user)
+  		relationships.find_by(follower_id: other_user.id)
+  	end
+
+  	def follow!(other_user)
+  		relationships.create!(follower_id: other_user.id)
+  	end
+
 	private
 
 		def create_remember_token
