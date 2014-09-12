@@ -6,7 +6,7 @@
 			= gravatar_for @user
 			%h1= @user.name
 			%span= link_to 'view my profile', @user
-			%span= "<b>Microposts:</b> @user.microposts.count".html_safe
+			%span= "<b>Microposts:</b> #{@user.microposts.count}".html_safe
 
 		%section
 			= render 'shared/stats'
