@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
   		relationships.create!(follower_id: other_user.id)
   	end
 
+  	def unfollow!(other_user)
+  		relationships.find_by(follower_id: other_user.id).destroy
+  	end
+
 	private
 
 		def create_remember_token
