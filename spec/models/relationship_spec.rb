@@ -9,4 +9,12 @@ describe Relationship do
 	subject { relationship }
 
 	it { should be_valid }
-end
+
+	describe "foller methods" do
+		it { should respond_to(:follower) }
+		it { should respond_to(:followed) }
+
+		its(:follower) { should eq follower }
+		its(:followed) { should eq followed }
+	end
+end 
